@@ -14,4 +14,17 @@ ARQUITECTURA::
     
 CODIGO:
 
-    iniciamos con index.js
+    iniciamos con index.js :: CERAMOS LA CONEXION AL SERVIDOR express
+
+    Instalamos un modulo para ayudarnos con la desconexion del servidor:
+    npm i nodemon -D
+
+    index.js :: continuamos on settings, donde podriamos configurar el motor de plantillas, donde estan las vistas, el framwork , etc
+
+    index.js :: seguimos con Middlewares, donde configuraremos cosass del servidor que luego nos van a servir
+
+    index.js :: Ahora nos enfocaremos en las rutas , ROUTES
+        Creamos folders : index.js   notes.js    users.js
+        Aca iran las URLS de la app
+
+
