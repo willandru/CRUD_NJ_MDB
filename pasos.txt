@@ -12,3 +12,6 @@ ARQUITECTURA::
     config: puede almacenar archivos de conexion a la base d datos | variables de configuracion del entorno, configuracion de como estoy autenticando (modulos)
 
     
+CODIGO:
+
+    iniciamos con index.js
