@@ -1,0 +1,14 @@
+npm init --yes
+
+npm i express express-handlebars express-session method-override mongoose passport passport-local bcryptjs connect-flash
+
+ARQUITECTURA::
+    FOLDERS:
+    views : va a llevar todas las paginas HTML que enviaremos al navegador (HAANDELBARS)
+    routes: para crear las rutas para conectarnos al servidor, por ejemppo ruta login, register
+    public: insertaremos archivos estaticos como imagenes, fuentes css, js
+    models: como van a lucir los datos que queremos almacenar a la base de datos
+    helpres: coloco funciones que mi servidor puede necesitar, funcion que podremos reutilziar en cualquier parte
+    config: puede almacenar archivos de conexion a la base d datos | variables de configuracion del entorno, configuracion de como estoy autenticando (modulos)
+
+    
