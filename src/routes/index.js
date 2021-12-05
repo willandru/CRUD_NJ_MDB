@@ -4,11 +4,11 @@ const router = require('express').Router(); // Crear un objeto para facilitarme 
 
 
 router.get('/', (req, res) =>{
-    res.send('Index');
+    res.render('index');  //Como respuesta , renderiza el archivo index.hbs
 });
 
 router.get('/about', (req, res) => {
-    res.send('About');
+    res.render('about');
 });
 
 module.exports = router;
