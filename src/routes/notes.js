@@ -1,5 +1,7 @@
 const router = require('express').Router(); // Crear un objeto para facilitarme la creacion de rutas
 
+const Note = require('../models/Note');
+
 
 router.get('/notes/add', (req, res) =>{
     res.render('notes/new-note')
@@ -23,7 +25,9 @@ router.post('/notes/new-note', (req, res) =>{
             description
         })
     }else{
-        res.send('Ok');
+        const newNote= new Note({title, description});
+        console.log(newNote);
+        res.send('ok')
     }
 
     
