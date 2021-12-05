@@ -2,7 +2,13 @@ const router = require('express').Router(); // Crear un objeto para facilitarme 
 
 
 
+router.get('/users/signin', (req, res) => {
+    res.send('Ingresando a la aplicacion ... ');
+});
 
+router.get('/users/signup', (req,res) =>{
+    res.send('Formulario de authenticacion ... ');
+});
 
 
 module.exports = router;

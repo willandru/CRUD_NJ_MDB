@@ -9,7 +9,7 @@ const session = require('express-session');
 //INITIALIZATIONS
 
 const app = express();
-
+require('./database');
 
 
 
@@ -62,7 +62,7 @@ app.use(require('./routes/users'));
 //STAATIC FILES
 
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
