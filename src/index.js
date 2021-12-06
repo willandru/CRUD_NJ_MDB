@@ -42,7 +42,7 @@ app.use(session({
 app.use(flash());
 
 
-
+ 
 //GLOBAL VARIABLES
 
 
