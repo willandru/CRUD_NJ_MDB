@@ -17,12 +17,24 @@ require('./database');
 app.set('port', process.env.PORT || 3000);   //Si hay un puerto de la nube o sino utilize port:3000
 
 app.set('views', path.join(__dirname, 'views')); //Para decirle a node donde esta la carpeta viwes para los HTML
-app.engine('.hbs',exphbs.engine({
+/* app.engine('.hbs',exphbs.engine({
     defaultLayout:'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),       //Para manejar as vistas HTML que enviaremos al navegador
     extname: '.hbs',
-}));  // Para indicarle que el tipo de archivo es handebars (no HTLM)
+}));  */ // Para indicarle que el tipo de archivo es handebars (no HTLM)
+
+app.engine('.hbs', exphbs.engine({
+    defaultLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.hbs'
+}));
+
 app.set('view engine', '.hbs');
 
 
