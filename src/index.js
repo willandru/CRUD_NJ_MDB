@@ -6,23 +6,21 @@ const session = require('express-session');
 
 const flash = require('connect-flash');
 
+
+const passport = require('passport');
+
 //INITIALIZATIONS
 
 const app = express();
 require('./database');
-
+require('./config/passport');
 
 
 // SETTINGS
 app.set('port', process.env.PORT || 3000);   //Si hay un puerto de la nube o sino utilize port:3000
 
 app.set('views', path.join(__dirname, 'views')); //Para decirle a node donde esta la carpeta viwes para los HTML
-/* app.engine('.hbs',exphbs.engine({
-    defaultLayout:'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),       //Para manejar as vistas HTML que enviaremos al navegador
-    extname: '.hbs',
-}));  */ // Para indicarle que el tipo de archivo es handebars (no HTLM)
+
 
 app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
@@ -51,9 +49,13 @@ app.use(session({
     saveUninitialized: true
 }));
 
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+console.log('Passport initialized');
+
 app.use(flash());
-
-
  
 //GLOBAL VARIABLES
 
@@ -63,7 +65,7 @@ app.use((req, res, next) =>{
 
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
-    
+    res.locals.error = req.flash('error');
     next();
 });
 

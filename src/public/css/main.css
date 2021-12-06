@@ -4,3 +4,21 @@ background: -webkit-linear-gradient(to right,#0F2027, #2C5364, #0F2027 /*#203A43
 background: linear-gradient(to right,#0F2027, #2C5364, #0F2027 /*#203A43*/ ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
+
+
+.logo{
+    width: 40%;
+}
+
+.jojo{
+  /*   background: #1D4350;  
+    background: -webkit-linear-gradient(to right, #A43931, #1D4350);  
+    background: linear-gradient(to right, #A43931, #1D4350);  */
+     
+
+     background: #EB5757;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #000000, #EB5757);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #000000,#EB5757,#000000 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
