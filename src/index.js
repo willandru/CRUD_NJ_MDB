@@ -22,14 +22,6 @@ app.set('port', process.env.PORT || 3000);   //Si hay un puerto de la nube o sin
 app.set('views', path.join(__dirname, 'views')); //Para decirle a node donde esta la carpeta viwes para los HTML
 
 
-/* app.engine('.hbs',exphbs.engine({
-    defaultLayout:'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),       //Para manejar as vistas HTML que enviaremos al navegador
-    extname: '.hbs',
-})); */  // Para indicarle que el tipo de archivo es handebars (no HTLM)
-
-
 app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
     runtimeOptions: {
@@ -74,6 +66,9 @@ app.use((req, res, next) =>{
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+
+    res.locals.user = req.user || null;         
+
     next();
 });
 

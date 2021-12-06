@@ -80,4 +80,13 @@ console.log("SignUP");
 
 
 
+// LOG OUT
+
+router.get('/users/logout', (req,res)=>{
+    req.logOut();
+    res.redirect('/');
+})
+
+
+
 module.exports = router;
