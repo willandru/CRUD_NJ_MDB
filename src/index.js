@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const methoOverride= require('method-override');
 const session = require('express-session');
 
-
+const flash = require('connect-flash');
 
 //INITIALIZATIONS
 
@@ -39,13 +39,21 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(flash());
 
 
 
 //GLOBAL VARIABLES
 
 
+app.use((req, res, next) =>{
+    
 
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    
+    next();
+});
 
 
 
