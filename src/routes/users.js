@@ -1,10 +1,22 @@
 const router = require('express').Router(); // Crear un objeto para facilitarme la creacion de rutas
-
 const User = require('../models/User');
+const passport = require('passport');
+
 
 router.get('/users/signin', (req, res) => {
+    console.log('Hola men   render');
     res.render('users/signin');
 });
+
+router.post('/users/signin',passport.authenticate('local', {
+    
+    successRedirect: '/notes',
+    failureRedirect: '/users/signin',
+    failureFlash: true
+}) );
+
+
+
 
 router.get('/users/signup', (req,res) =>{
     res.render('users/signup');
@@ -15,6 +27,7 @@ router.post('/users/signup', async (req,res) =>{
     /* console.log(req.body);
     res.send('ok')
  */
+console.log("SignUP");
     const {name, email, password, confirm_password} = req.body;
 
     const errors=[];

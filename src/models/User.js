@@ -20,4 +20,20 @@ UserSchema.methods.matchPassword = async function(password){
     return await bcrypt.compare(password, this.password);
 };
 
+/* UserSchema.method('matchPassword', function(password) {
+    return new Promise((resolve, reject) => {
+      bcrypt.compare(password, this.password, (err, res) => {
+        if (err) reject(err)
+        resolve(res)
+      })
+    })
+  }) */
+
+/* UserSchema.methods.matchPassword = async (password)=>{
+    console.log(password);
+    console.log(this.password);
+    return await bcrypt.compare(password, this.password);
+}; */
+
+
 module.exports = mongoose.model('User', UserSchema);
