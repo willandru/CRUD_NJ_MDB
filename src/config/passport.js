@@ -14,19 +14,15 @@ passport.use(new LocalStrategy({
                         return done(null, false, {message: 'Not User Found'});
                     } 
                     
-                    const isPasswordMatched = await user.matchPassword(password);
-                    if(!isPasswordMatched){
-                        // return next (new ErrorHandler('Invalid Email or Password', 401));
-                        conosole.log('YAAA');
-                    }
-                    /* else{
+                
+                    else{
                         const match = await user.matchPassword(password);
                         if(match){
                             return done(null, user);
                         }else{
                             return done(null, false, {message: 'Incorrect Password'});
                         }
-                    } */ 
+                    } 
                   
 }));
 
