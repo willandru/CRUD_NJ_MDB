@@ -1,11 +1,13 @@
 const router = require('express').Router(); // Crear un objeto para facilitarme la creacion de rutas
 
+const Note = require('../models/Note');
+
 
 router.get('/notes/add', (req, res) =>{
     res.render('notes/new-note')
 });
 
-router.post('/notes/new-note', (req, res) =>{
+router.post('/notes/new-note', async (req, res) =>{
     const{title, description}= req.body;
 
     const errors = [];
@@ -23,7 +25,10 @@ router.post('/notes/new-note', (req, res) =>{
             description
         })
     }else{
-        res.send('Ok');
+        const newNote= new Note({title, description});
+        console.log(newNote);
+        await newNote.save();
+        res.redirect('/notes');
     }
 
     
@@ -31,10 +36,26 @@ router.post('/notes/new-note', (req, res) =>{
 
 
 
-router.get('/notes', (req, res) => {
-    res.send('Notas desde la BASE DE DATOS ... ');
+router.get('/notes', async (req, res) => {
+   const notes= await  Note.find().sort({date: 'desc'}).lean();
+   res.render('notes/all-notes', {notes});
+
 });
 
+
+router.get('/notes/edit/:id' , async (req, res) =>{
+        const note= await Note.findById(req.params.id).lean();
+    res.render('notes/edit-note', {note})
+    console.log("Hola")
+})
+
+router.put('/notes/edit-note/:id', async (req, res) =>{
+    const {title, description} = req.body;
+    console.log(title)
+    console.log(description)
+    await Note.findByIdAndUpdate(req.params.id, { title, description});
+    res.redirect('/notes');
+});
 
 
 
